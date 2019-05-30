@@ -35,4 +35,5 @@ conky.config = {
 
 conky.text = [[
 ${offset 15}${font Droid Sans Mono:size=10}${execi 14400 python3 ~/conkyConfigs/trello/trelloMain.py | fold -s -w 200}
+${offset 15}${font Droid Sans Mono:size=10}${execi 14400 cat ~/conkyConfigs/ListMD/hw.md | fold -s -w 200}
 ]]
