@@ -1,0 +1,38 @@
+conky.config = {
+    background = true,
+    update_interval = 1.5,
+    cpu_avg_samples = 2,
+    net_avg_samples = 2,
+    out_to_console = false,
+    override_utf8_locale = true,
+    double_buffer = true,
+    no_buffers = true,
+    text_buffer_size = 50000,
+    imlib_cache_size = 0,
+    own_window = true,
+    own_window_type = 'desktop',
+    own_window_argb_visual = true,
+    own_window_argb_value = 100,
+    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+    border_inner_margin = 0,
+    border_outer_margin = 0,
+    xinerama_head = 1,
+    alignment = 'bottom_middle',
+    gap_x = 0,
+    gap_y = 50,
+    draw_shades = true,
+    draw_outline = false,
+    draw_borders = false,
+    draw_graph_borders = false,
+    use_xft = true,
+    font = 'Droid Sans Mono:bold:size=9',
+    xftalpha = 0.8,
+    uppercase = false,
+    default_color = '#FFFFFF',
+    own_window_colour = '#000000',
+    minimum_width = 0, minimum_height = 0,
+}
+
+conky.text = [[
+${offset 15}${font Droid Sans Mono:size=10}${execi 14400 python3 ~/conkyConfigs/trello/trelloMain.py | fold -s -w 200}
+]]
