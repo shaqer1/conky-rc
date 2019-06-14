@@ -7,25 +7,25 @@ conky.config = {
     override_utf8_locale = true,
     double_buffer = true,
     no_buffers = true,
-    text_buffer_size = 32768,
+    text_buffer_size = 50000,
     imlib_cache_size = 0,
     own_window = true,
     own_window_type = 'desktop',
     own_window_argb_visual = true,
     own_window_argb_value = 100,
     own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
-    border_inner_margin = 10,
+    border_inner_margin = 0,
     border_outer_margin = 0,
     xinerama_head = 1,
-    alignment = 'bottom_right',
+    alignment = 'top_right',
     gap_x = 0,
-    gap_y = 125,
-    draw_shades = true,
+    gap_y = 0,
+    draw_shades = false,
     draw_outline = false,
     draw_borders = false,
     draw_graph_borders = false,
     use_xft = true,
-    font = 'Droid Sans Mono:bold:size=9',
+    font = 'Droid Sans Mono:size=9',
     xftalpha = 0.8,
     uppercase = false,
     default_color = '#FFFFFF',
@@ -34,5 +34,33 @@ conky.config = {
 };
 
 conky.text = [[
-    ${execpi 300 ~/.config/gcal.sh}
+    ${execpi 300 gcalcli --conky --nolineart calw 4 |
+                    sed -e 's/(0\x71(B/-/g' \
+                        -e 's/(0\x78(B/|/g' \
+                        -e 's/(0\x6A(B/-/g' \
+                        -e 's/(0\x6B(B/|/g' \
+                        -e 's/(0\x6C(B/-/g' \
+                        -e 's/(0\x6D(B/|/g' \
+                        -e 's/(0\x6E(B/-/g' \
+                        -e 's/(0\x74(B/|/g' \
+                        -e 's/(0\x75(B/-/g' \
+                        -e 's/(0\x76(B/|/g' \
+                        -e 's/(0\x77(B/-/g' \
+                        -e 's/(0\x78(B/|/g' \
+                        -e 's/(0\x6A(B/-/g' \
+                        -e 's/(0\x6B(B/|/g' \
+                        -e 's/(0\x6C(B/-/g' \
+                        -e 's/(0\x6D(B/|/g' \
+                        -e 's/(0\x6E(B/-/g' \
+                        -e 's/(0\x74(B/|/g' \
+                        -e 's/(0\x75(B/-/g' \
+                        -e 's/(0\x76(B/|/g' \
+                        -e 's/(0\x77(B/-/g'}
+    ${offset 15}${font Droid Sans Mono:size=10}${execi 3600 python3 ~/conkyConfigs/trello/trelloMain.py | lynx --dump -stdin | fold -s -w 100}
+    ${hr}
+    ${color green}HW/assignments${color}
+    ${hr}
+    ${execi 3600 python3 ~/conkyConfigs/ListMD/mdToPython.py /home/shafay/conkyConfigs/ListMD/hw.md | lynx --dump -stdin | fold -s -w 40 }
+    ${alignr}${font Droid Sans Mono:size=10}${execpi 3600 python3 ~/conkyConfigs/ListMD/mdToPython.py /home/shafay/conkyConfigs/ListMD/notes.md | lynx --dump -stdin | fold -s -w 100 |sed 's/^/${alignr}/'}
+
 ]];

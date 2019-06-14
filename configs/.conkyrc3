@@ -17,7 +17,7 @@ conky.config = {
     border_inner_margin = 0,
     border_outer_margin = 0,
     xinerama_head = 1,
-    alignment = 'bottom_middle',
+    alignment = 'bottom_right',
     gap_x = 0,
     gap_y = 50,
     draw_shades = true,
@@ -34,6 +34,12 @@ conky.config = {
 }
 
 conky.text = [[
-${offset 15}${font Droid Sans Mono:size=10}${execi 14400 python3 ~/conkyConfigs/trello/trelloMain.py | fold -s -w 200}
-${offset 15}${font Droid Sans Mono:size=10}${execi 14400 cat ~/conkyConfigs/ListMD/hw.md | fold -s -w 200}
+${offset 15}${font Droid Sans Mono:size=10}${execi 3600 python3 ~/conkyConfigs/trello/trelloMain.py | lynx --dump -stdin | fold -s -w 100}
+${hr}
+${color green}HW/assignments${color}
+${hr}
+${execi 3600 python3 ~/conkyConfigs/ListMD/mdToPython.py /home/shafay/conkyConfigs/ListMD/hw.md | lynx --dump -stdin | fold -s -w 40 }
+${alignr}${font Droid Sans Mono:size=10}${execpi 3600 python3 ~/conkyConfigs/ListMD/mdToPython.py /home/shafay/conkyConfigs/ListMD/notes.md | lynx --dump -stdin | fold -s -w 100 |sed 's/^/${alignr}/'}
 ]]
+
+

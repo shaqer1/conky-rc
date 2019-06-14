@@ -1,12 +1,13 @@
 {
     "version": "0.2.0",
     "configurations": [
+
         {
-            "name": "Python: trelloMain",
+            "name": "Python: weatherMain",
             "type": "python",
             "request": "launch",
-            "cwd": "${workspaceFolder}/trello",
-            "program": "${workspaceFolder}/trello/trelloMain.py",
+            "cwd": "${workspaceFolder}/weather",
+            "program": "${workspaceFolder}/weather/weather.py",
             "console": "integratedTerminal",
         }
     ]
