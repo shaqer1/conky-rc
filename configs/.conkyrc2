@@ -43,6 +43,7 @@ conky.config = {
 }
 
 conky.text = [[
+${execpi 300 python3 ~/conkyConfigs/weather/weather.py}
 ${image ~/.face -p 5,20 -s 100x100 -f 86400}
 ${font Latin Modern Mono Caps:bold:size=14}${alignc}${color 00ffae}$nodename
 ${font Noto Sans:bold:size=8}${alignc}${desktop_name} ${desktop}/$desktop_number
@@ -79,13 +80,14 @@ ${offset 15}${color FF7878}${top name 4} ${alignr}${top pid 4} ${top cpu 4} ${to
 ${font Entopia:bold:size=12}${color 00ffae}Today's Horoscope ${hr 2}$color
 ${offset 15}${font Droid Sans Mono:size=10}${execi 14400 ~/conkyHoros/horo.sh | fold -s -w 40}
 ${font Entopia:bold:size=12}${color FFFF33}Weather ${hr 2}$color
-${execi 1800 python3 ~/conkyConfigs/weather/weather.py}
-${alignr}${execi 1800 cat ~/conkyConfigs/weather/weatherDat | sed -n 1p}
-${alignr}${execi 1800 cat ~/conkyConfigs/weather/weatherDat | sed -n 2p}
-${alignr}${execi 1800 cat ~/conkyConfigs/weather/weatherDat | sed -n 3p}
-${alignr}${execi 1800 cat ~/conkyConfigs/weather/weatherDat | sed -n 4p}
-${alignr}${execi 1800 cat ~/conkyConfigs/weather/weatherDat | sed -n 5p}
-${alignr}${execi 1800 cat ~/conkyConfigs/weather/weatherDat | sed -n 6p}
-${image ~/conkyConfigs/weather/weatherDescBG.png -p 8,845 -s 50x50 }
-${image ~/conkyConfigs/weather/weatherDesc.png -p 8,845 -s 50x50 }
+${font Entopia:size=8}
+${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 1p}
+${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 2p}
+${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 3p}
+${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 4p}
+${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 5p}
+${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 6p}
+${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 7p}
+${image ~/conkyConfigs/weather/weatherDescBG.png -p 8,870 -s 50x50 }
+${image ~/conkyConfigs/weather/weatherDesc.png -p 8,870 -s 50x50 }
 ]]
