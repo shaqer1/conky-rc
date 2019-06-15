@@ -10,6 +10,7 @@ conky.config = {
     draw_shades = false,
     default_outline_color = 'grey',
     default_shade_color = 'black',
+    imlib_cache_size = 0,  
     draw_borders = true,
     draw_graph_borders = true,
     draw_outline = false,
