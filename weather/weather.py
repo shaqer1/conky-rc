@@ -47,7 +47,7 @@ def main():
     
     windSpeed = currentWeatherData['wind']['speed']
     windDegrees = currentWeatherData['wind']['deg']
-    windDegrees = windDegreeSwitcher(windDegrees)
+    windDegrees = windDegreeSwitcher(windDegrees) # 240 degrees
 
 
     weatherDesc = currentWeatherData['weather'][0]['main']
