@@ -2,12 +2,13 @@
     "version": "0.2.0",
     "configurations": [
 
+
         {
-            "name": "Python: weatherMain",
+            "name": "Python: weatherMainDarkSky",
             "type": "python",
             "request": "launch",
             "cwd": "${workspaceFolder}/weather",
-            "program": "${workspaceFolder}/weather/weather.py",
+            "program": "${workspaceFolder}/weather/weather1.py",
             "console": "integratedTerminal",
         }
     ]
