@@ -4,14 +4,26 @@ import datetime
 from shutil import copyfile
 
 
-def windDegreeSwitcher(argument): # TODO
-    switcher = {
-        0: "East",
-        90: "North",
-        180: "West",
-        270: "South",
-    }
-    return switcher.get(argument, "Invalid Degrees")
+def windDegreeSwitcher(argument): 
+    if(argument >= 340):
+        return "East"
+    elif(argument >= 290):
+        return "South East"
+    elif(argument >= 250):
+        return "South"
+    elif(argument >= 200):
+        return "South West"
+    elif(argument >= 160):
+        return "West"
+    elif(argument >= 110):
+        return "North West"
+    elif(argument >= 70):
+        return "North"
+    elif(argument >= 20):
+        return "North East"
+    elif (argument > 0):
+        return "East"
+    return "Invalid Degrees"
 
 def setIcons(**kwargs): # TODO
     for key, value in kwargs.items(): 
