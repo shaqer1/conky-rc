@@ -16,7 +16,7 @@ conky.config = {
     draw_outline = false,
     use_xft = true,
     font = 'Droid Sans Mono:size=12',
-    gap_x = 5,
+    gap_x = 85,
     gap_y = 0,
     minimum_height = 5,
     minimum_width = 5,
@@ -44,8 +44,7 @@ conky.config = {
 }
 
 conky.text = [[
-${execpi 300 python3 ~/conkyConfigs/weather/weatherDarkSky.py}
-${image ~/.face -p 5,20 -s 100x100 -f 86400}
+${execpi 300 python3 ~/conkyConfigs/weather/weatherDarkSky.py}${image ~/.face -p 5,20 -s 100x100 -f 86400}
 ${font Latin Modern Mono Caps:bold:size=14}${alignc}${color 00ffae}$nodename
 ${font Noto Sans:bold:size=8}${alignc}${desktop_name} ${desktop}/$desktop_number
 ${font Noto Sans:bold:size=8}${alignc}    ${exec hostnamectl | grep System | cut -c21-40}
@@ -87,14 +86,14 @@ ${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 3p}
 ${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 4p}
 ${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 5p}
 ${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 6p}
-${image ~/conkyConfigs/weather/hour1.png -p 8,950 -s 50x50 }
+${image ~/conkyConfigs/weather/icons/current/hour1.png -p 8,950 -s 50x50 }
 
 
 ${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 7p}   ${alignc}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 11p}${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 15p}
 ${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 8p}   ${alignc}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 12p}${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 16p}
 ${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 9p}   ${alignc}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 13p}${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 17p}
 ${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 10p}   ${alignc}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 14p}${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 18p}
-${alignc}${image ~/conkyConfigs/weather/hour2.png -p 125,950 -s 50x50 }
-${alignr}${image ~/conkyConfigs/weather/hour3.png -p 225,950 -s 50x50 }
-${image ~/conkyConfigs/weather/currentIcon.png -p 8,850 -s 50x50 }
+${alignc}${image ~/conkyConfigs/weather/icons/current/hour2.png -p 125,950 -s 50x50 }
+${alignr}${image ~/conkyConfigs/weather/icons/current/hour3.png -p 270,950 -s 50x50 }
+${image ~/conkyConfigs/weather/icons/current/currentIcon.png -p 8,850 -s 50x50 }
 ]]

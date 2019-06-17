@@ -8,7 +8,7 @@
             "type": "python",
             "request": "launch",
             "cwd": "${workspaceFolder}/weather",
-            "program": "${workspaceFolder}/weather/weather1.py",
+            "program": "${workspaceFolder}/weather/weatherDarkSky.py",
             "console": "integratedTerminal",
         }
     ]

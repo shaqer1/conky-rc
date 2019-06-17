@@ -1,0 +1,51 @@
+conky.config = {
+    background = true,
+    update_interval = 1.5,
+    cpu_avg_samples = 2,
+    net_avg_samples = 2,
+    out_to_console = false,
+    override_utf8_locale = true,
+    double_buffer = true,
+    no_buffers = true,
+    text_buffer_size = 50000,
+    imlib_cache_size = 0,
+    own_window = true,
+    own_window_type = 'desktop',
+    own_window_argb_visual = true,
+    own_window_argb_value = 100,
+    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+    border_inner_margin = 0,
+    border_outer_margin = 0,
+    xinerama_head = 0,
+    alignment = 'bottom_right',
+    gap_x = 0,
+    gap_y = 50,
+    draw_shades = false,
+    draw_outline = false,
+    draw_borders = false,
+    draw_graph_borders = false,
+    use_xft = true,
+    font = 'Droid Sans Mono:size=9',
+    xftalpha = 0.8,
+    uppercase = false,
+    default_color = '#FFFFFF',
+    own_window_colour = '#000000',
+    minimum_width = 631, minimum_height = 0,
+};
+
+conky.text = [[
+${font Entopia:bold:size=12}${color FFFF33}3 Day Forecast ${hr 2}$color${font}${color}
+${execpi 300 cat ~/conkyConfigs/weather/weatherDailyDat | sed -n 1p | fold -s -w 60 | sed 's/^/${alignc}/'}
+
+
+
+${image ~/conkyConfigs/weather/icons/current/day1.png -s 50x50 -p 8,60 }${alignc}${image ~/conkyConfigs/weather/icons/current/day2.png -p 270,60 -s 50x50 }${alignr}${image ~/conkyConfigs/weather/icons/current/day3.png -p 580,60 -s 50x50 }
+${execpi 300 cat ~/conkyConfigs/weather/weatherDailyDat | sed -n 2p}
+${hr 2}
+${execpi 300 cat ~/conkyConfigs/weather/weatherDailyDat | sed -n 3p}
+${execpi 300 cat ~/conkyConfigs/weather/weatherDailyDat | sed -n 4p}
+${hr 2}
+${execpi 300 cat ~/conkyConfigs/weather/weatherDailyDat | sed -n 5p}
+${execpi 300 cat ~/conkyConfigs/weather/weatherDailyDat | sed -n 6p}
+
+]];

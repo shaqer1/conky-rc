@@ -2,4 +2,4 @@
 ## Trello
 - add colors and alignment
 ## Notes MD
-- add python file to merge all files
+- add alignc/r etc in python file with each line iterated!

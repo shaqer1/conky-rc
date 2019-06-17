@@ -16,7 +16,7 @@ conky.config = {
     own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
     border_inner_margin = 0,
     border_outer_margin = 0,
-    xinerama_head = 1,
+    xinerama_head = 0,
     alignment = 'top_right',
     gap_x = 0,
     gap_y = 0,
@@ -30,11 +30,11 @@ conky.config = {
     uppercase = false,
     default_color = '#FFFFFF',
     own_window_colour = '#000000',
-    minimum_width = 0, minimum_height = 0,
+    minimum_width = 639, minimum_height = 0,
 };
 
-conky.text = [[
-    ${execpi 300 gcalcli --conky --nolineart calw 4 |
+conky.text = [[${font Entopia:bold:size=12}${color FFFF33}4 Week Agenda${hr 2}$color${font}${color}
+    ${execpi 300 gcalcli --conky --nolineart calw 4 --width 12|
                     sed -e 's/(0\x71(B/-/g' \
                         -e 's/(0\x78(B/|/g' \
                         -e 's/(0\x6A(B/-/g' \
@@ -55,12 +55,4 @@ conky.text = [[
                         -e 's/(0\x74(B/|/g' \
                         -e 's/(0\x75(B/-/g' \
                         -e 's/(0\x76(B/|/g' \
-                        -e 's/(0\x77(B/-/g'}
-    ${offset 15}${font Droid Sans Mono:size=10}${execi 3600 python3 ~/conkyConfigs/trello/trelloMain.py | lynx --dump -stdin | fold -s -w 100}
-    ${hr}
-    ${color green}HW/assignments${color}
-    ${hr}
-    ${execi 3600 python3 ~/conkyConfigs/ListMD/mdToPython.py /home/shafay/conkyConfigs/ListMD/hw.md | lynx --dump -stdin | fold -s -w 40 }
-    ${alignr}${font Droid Sans Mono:size=10}${execpi 3600 python3 ~/conkyConfigs/ListMD/mdToPython.py /home/shafay/conkyConfigs/ListMD/notes.md | lynx --dump -stdin | fold -s -w 100 |sed 's/^/${alignr}/'}
-
-]];
+                        -e 's/(0\x77(B/-/g'}]];
