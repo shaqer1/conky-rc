@@ -89,13 +89,6 @@ def addDailyData(hourlyWeatherData,s):
         s+= '\n'
         if(i>2):
             k+=1
-        """ s += '{}\n{}\n{}º-{}º\nFeels Like {}º-{}º\n'.format(
-            date,
-            hourlyWeatherData[i]['summary'],
-            hourlyWeatherData[i]['temperatureLow'],
-            hourlyWeatherData[i]['temperatureHigh'],
-            hourlyWeatherData[i]['apparentTemperatureLow'],
-            hourlyWeatherData[i]['apparentTemperatureHigh']) """
         i+=1
     return s
 
