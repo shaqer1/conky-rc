@@ -93,5 +93,5 @@ ${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 9p}   ${alignc}${exe
 ${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 10p}   ${alignc}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 14p}${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 18p}
 ${alignc}${image ~/conkyConfigs/weather/icons/current/hour2.png -p 125,700 -s 50x50 }${alignr}${image ~/conkyConfigs/weather/icons/current/hour3.png -p 270,700 -s 50x50 }${image ~/conkyConfigs/weather/icons/current/currentIcon.png -p 8,600 -s 50x50 }
 ${font Entopia:bold:size=12}${color 00ffae}Today's Horoscope ${hr 2}$color
-${offset 15}${font Droid Sans Mono:size=10}${execi 14400 ~/conkyHoros/horo.sh | fold -s -w 40}
+${offset 15}${font Droid Sans Mono:size=10}${execi 14400 ~/conkyConfigs/conkyHoros/horo.sh && cat horoscope | fold -s -w 40}
 ]]

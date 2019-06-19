@@ -132,7 +132,7 @@ def main():
     cloudsPerc = round(currentWeather['cloudCover']*100,0)
 
     pressure = currentWeather['pressure']
-    humidity = currentWeather['humidity']*100
+    humidity = round(currentWeather['humidity']*100,0)
     
     precipIntensity = currentWeather['precipIntensity']
     precipProbability = currentWeather['precipProbability']
