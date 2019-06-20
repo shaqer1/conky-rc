@@ -2,5 +2,13 @@ APIKey*
 test*
 horoscope
 wget-log*
-weather/weatherDailyDat
+ListMD/notesList
+ListMD/notesText
+weather/icons/current/day1.png
+weather/icons/current/day2.png
 weather/weatherDat
+weather/weatherDailyDat
+weather/icons/current/day3.png
+weather/icons/current/day4.png
+weather/icons/current/day5.png
+weather/icons/current/day6.png
