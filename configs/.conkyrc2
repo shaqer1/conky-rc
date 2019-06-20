@@ -61,16 +61,16 @@ ${offset 15}Core 2   ${color ff8300}${cpubar cpu2 6}${color FFFDE2}
 ${offset 15}Core 3   ${color ff8300}${cpubar cpu3 6}${color FFFDE2}
 ${offset 15}Core 4   ${color ff8300}${cpubar cpu4 6}${color FFFDE2}
 ${offset 15}${font}${color FFFDE2}Procs:$color $processes  ${color FFFDE2}Run:$color $running_processes Temp: ${acpitemp}°C
-${font Entopia:bold:size=12}${color green}NETWORK ${hr 2}${font DejaVu Sans Mono:size=9}
+${if_up vmnet1}${font Entopia:bold:size=12}${color green}NETWORK ${hr 2}${font DejaVu Sans Mono:size=9}
 ${offset 15}${color}Ext IP Addr ${color red}${alignr}${exec curl ipinfo.io/ip &> /dev/null}
 ${offset 15}${color}IPv4 Addr ${color red}${alignr}${addr vmnet1}
 ${offset 15}${color green}${font DejaVu Sans Mono:size=10}▼ $color${totaldown vmnet1} ${alignr}${color green}▲ $color${totalup vmnet1}
-${offset 15}${font DejaVu Sans Mono:size=10}${color green}▼ $color${downspeed vmnet1}${alignr}${color green}▲ $color${upspeed vmnet1}
-${offset 5}${font Entopia:bold:size=12}${color orange}${wireless_essid wlp1s0} ${stippled_hr 1}
+${offset 15}${font DejaVu Sans Mono:size=10}${color green}▼ $color${downspeed vmnet1}${alignr}${color green}▲ $color${upspeed vmnet1}${endif}
+${if_up wlp1s0}${offset 5}${font Entopia:bold:size=12}${color orange}${wireless_essid wlp1s0} ${stippled_hr 1}
 ${offset 15}${color}${font DejaVu Sans Mono:size=9}WiFi ${alignr}${wireless_link_qual_perc 
 wlp1s0}%(${wireless_link_qual wlp1s0}/${wireless_link_qual_max wlp1s0}) ${color red}${addr wlp1s0}
 ${offset 15}${font DejaVu Sans Mono:size=10}${color green}▼ $color${totaldown wlp1s0} ${alignr}${color green}▲ $color${totalup wlp1s0}
-${offset 15}${font DejaVu Sans Mono:size=10}${color green}▼ $color${downspeed wlp1s0}${alignr}${color green}▲ $color${upspeed wlp1s0}
+${offset 15}${font DejaVu Sans Mono:size=10}${color green}▼ $color${downspeed wlp1s0}${alignr}${color green}▲ $color${upspeed wlp1s0}${endif}
 ${font Entopia:bold:size=12}${color red}PROCESSES ${hr 2}
 ${offset 15}${font Noto sans:size=8}${color EDE0FF}Name               ${alignr}PID   CPU%   MEM%
 ${offset 15}${color FF7878}${top name 1} ${alignr}${top pid 1} ${top cpu 1} ${top mem 1}
@@ -84,14 +84,13 @@ ${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 3p}
 ${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 4p}
 ${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 5p}
 ${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 6p}
-${image ~/conkyConfigs/weather/icons/current/hour1.png -p 8,700 -s 50x50 }
+${image ~/conkyConfigs/weather/icons/current/hour1.png -p 8,635 -s 50x50 }
 
 
 ${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 7p}   ${alignc}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 11p}${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 15p}
 ${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 8p}   ${alignc}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 12p}${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 16p}
 ${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 9p}   ${alignc}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 13p}${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 17p}
-${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 10p}   ${alignc}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 14p}${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 18p}
-${alignc}${image ~/conkyConfigs/weather/icons/current/hour2.png -p 125,700 -s 50x50 }${alignr}${image ~/conkyConfigs/weather/icons/current/hour3.png -p 270,700 -s 50x50 }${image ~/conkyConfigs/weather/icons/current/currentIcon.png -p 8,600 -s 50x50 }
+${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 10p}   ${alignc}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 14p}${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 18p}${alignc}${image ~/conkyConfigs/weather/icons/current/hour2.png -p 150,635 -s 50x50 }${alignr}${image ~/conkyConfigs/weather/icons/current/hour3.png -p 330,635 -s 50x50 }${image ~/conkyConfigs/weather/icons/current/currentIcon.png -p 8,535 -s 50x50 }
 ${font Entopia:bold:size=12}${color 00ffae}Today's Horoscope ${hr 2}$color
-${offset 15}${font Droid Sans Mono:size=10}${execi 14400 ~/conkyConfigs/conkyHoros/horo.sh && cat horoscope | fold -s -w 40}
+${offset 15}${font Droid Sans Mono:size=10}${execi 14400 ~/conkyConfigs/conkyHoros/horo.sh && cat ~/conkyConfigs/conkyHoros/horoscope | fold -s -w 48}
 ]]

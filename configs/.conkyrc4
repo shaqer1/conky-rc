@@ -47,5 +47,4 @@ ${execpi 300 cat ~/conkyConfigs/weather/weatherDailyDat | sed -n 4p}
 ${hr 2}
 ${execpi 300 cat ~/conkyConfigs/weather/weatherDailyDat | sed -n 5p}
 ${execpi 300 cat ~/conkyConfigs/weather/weatherDailyDat | sed -n 6p}
-
 ]];

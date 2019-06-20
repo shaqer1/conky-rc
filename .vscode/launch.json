@@ -4,11 +4,12 @@
 
 
         {
-            "name": "Python: weatherMainDarkSky",
+            "name": "Python: combineFiles",
             "type": "python",
             "request": "launch",
-            "cwd": "${workspaceFolder}/weather",
-            "program": "${workspaceFolder}/weather/weatherDarkSky.py",
+            "args": ["/home/shafay/conkyConfigs/ListMD/notesText", "/home/shafay/conkyConfigs/ListMD/hwText"],
+            "cwd": "${workspaceFolder}/ListMD",
+            "program": "${workspaceFolder}/ListMD/combineFiles.py",
             "console": "integratedTerminal",
         }
     ]

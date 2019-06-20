@@ -11,8 +11,20 @@ def main():
     hwLines = hw.split('\n')
     notesLines = notes.split('\n')
 
-    maxLines = hw.count('\n') if hw.count('\n') > notes.count('\n') else notes.count('\n')
+    j=0
+    while(j<len(hwLines)):
+        if(hwLines[j]=='\n' or hwLines[j]==' ' or hwLines[j]==''):
+            del hwLines[j]
+        j+=1
+    j=0
+    while(j<len(notesLines)):
+        if(notesLines[j]=='\n' or notesLines[j]==' ' or notesLines[j]==''):
+            del notesLines[j]
+        j+=1
+
+    maxLines = len(hwLines) if len(hwLines) > len(notesLines) else len(notesLines)
     rendered = ''
+
     i = 0
 
     while(i<maxLines):
