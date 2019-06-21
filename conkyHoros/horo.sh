@@ -21,13 +21,6 @@ echo "$date - $horoscope"  | fold -s -w 55 > /home/shafay/conkyConfigs/conkyHoro
 grep "<h3>Today's Matches</h3>" scorpio.html -A 15 > matches
 grep "<h3>Sex <i" scorpioStars.html -A 8 > stars 
 
-
-echo '♥ ${alignc} ${font Symbola:size=8}🤝${alignr}💼${font DejaVu Sans Mono:size=9}' >> /home/shafay/conkyConfigs/conkyHoros/horoscope
-match1=$(cat matches | sed -n 6p | cut -c 4- | rev | cut -c 5- | rev)
-match2=$(cat matches | sed -n 11p | cut -c 4- | rev | cut -c 5- | rev)
-match3=$(cat matches | sed -n 16p | cut -c 4- | rev | cut -c 5- | rev)
-echo "${newmap["$match1"]}$match1\${alignc}${newmap["$match2"]}$match2\${alignr}${newmap["$match3"]}$match3" >> /home/shafay/conkyConfigs/conkyHoros/horoscope
-
 rating=$(cat stars | sed -n 1p | grep -o 'highlight' | wc -l)
 star='${alignc}'
 for(( c=1; c<=$rating; c++ )) 
@@ -64,8 +57,14 @@ for(( c=1; c<=$rating; c++ ))
 do
     star="$star ★"
 done
-description=$(cat stars | sed -n 8p | cut -c 4- | rev | cut -c 5- | rev | fold -w 55)
+description=$(cat stars | sed -n 8p | cut -c 4- | rev | cut -c 5- | rev | fold -s -w 55)
 echo 'Success' "$star" >> /home/shafay/conkyConfigs/conkyHoros/horoscope
 echo "$description" >> /home/shafay/conkyConfigs/conkyHoros/horoscope
+
+echo '♥ ${alignc} ${font Symbola:size=8}🤝${alignr}💼${font DejaVu Sans Mono:size=9}                 ' >> /home/shafay/conkyConfigs/conkyHoros/horoscope
+match1=$(cat matches | sed -n 6p | cut -c 4- | rev | cut -c 5- | rev)
+match2=$(cat matches | sed -n 11p | cut -c 4- | rev | cut -c 5- | rev)
+match3=$(cat matches | sed -n 16p | cut -c 4- | rev | cut -c 5- | rev)
+echo "$match1${newmap["$match1"]}\${alignc}$match2${newmap["$match2"]}\${alignr}$match3${newmap["$match3"]}                 " >> /home/shafay/conkyConfigs/conkyHoros/horoscope
 
 rm -f scorpio* matches stars wget-log*
