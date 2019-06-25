@@ -44,7 +44,7 @@ systemDate=$(date +'%Y-%m-%d')
 systemDate=$(date -d $systemDate +%s)
 
 if [ "$systemDate" -ne "$date" ]
-then    
+then
     if [ "$systemDate" -gt "$date" ]
     then
         wget https://www.horoscope.com/us/horoscopes/general/horoscope-general-daily-tomorrow.aspx\?sign\=8 --output-document=scorpio.html -q
