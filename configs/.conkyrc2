@@ -60,8 +60,7 @@ ${offset 15}Core 1   ${color ff8300}${cpubar cpu1 6}${color FFFDE2}
 ${offset 15}Core 2   ${color ff8300}${cpubar cpu2 6}${color FFFDE2}
 ${offset 15}Core 3   ${color ff8300}${cpubar cpu3 6}${color FFFDE2}
 ${offset 15}Core 4   ${color ff8300}${cpubar cpu4 6}${color FFFDE2}
-${offset 15}${font}${color FFFDE2}Procs:$color $processes  ${color FFFDE2}Run:$color $running_processes Temp: ${acpitemp}°C
-${if_up vmnet1}${font Entopia:bold:size=10}${color green}NETWORK ${hr 2}${font DejaVu Sans Mono:size=9}
+${offset 15}${font}${color FFFDE2}Procs:$color $processes  ${color FFFDE2}Run:$color $running_processes Temp: ${acpitemp}°C${if_up vmnet1}${font Entopia:bold:size=10}${color green}NETWORK ${hr 2}${font DejaVu Sans Mono:size=9}
 ${offset 15}${color}Ext IP Addr ${color red}${alignr}${exec curl ipinfo.io/ip &> /dev/null}
 ${offset 15}${color}IPv4 Addr ${color red}${alignr}${addr vmnet1}
 ${offset 15}${color green}${font DejaVu Sans Mono:size=10}▼ $color${totaldown vmnet1} ${alignr}${color green}▲ $color${totalup vmnet1}
