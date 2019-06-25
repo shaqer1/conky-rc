@@ -83,13 +83,13 @@ ${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 3p}
 ${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 4p}
 ${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 5p}
 ${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 6p}
-${image ~/conkyConfigs/weather/icons/current/hour1.png -p 8,620 -s 50x50 }
+${image ~/conkyConfigs/weather/icons/current/hour1.png -p 8,600 -s 50x50 }
 
 
 ${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 7p}   ${alignc}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 11p}${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 15p}
 ${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 8p}   ${alignc}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 12p}${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 16p}
 ${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 9p}   ${alignc}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 13p}${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 17p}
-${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 10p}   ${alignc}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 14p}${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 18p}${alignc}${image ~/conkyConfigs/weather/icons/current/hour2.png -p 150,620 -s 50x50 }${alignr}${image ~/conkyConfigs/weather/icons/current/hour3.png -p 330,620 -s 50x50 }${image ~/conkyConfigs/weather/icons/current/currentIcon.png -p 8,520 -s 50x50 }
+${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 10p}   ${alignc}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 14p}${alignr}${execpi 300 cat ~/conkyConfigs/weather/weatherDat | sed -n 18p}${alignc}${image ~/conkyConfigs/weather/icons/current/hour2.png -p 150,600 -s 50x50 }${alignr}${image ~/conkyConfigs/weather/icons/current/hour3.png -p 330,600 -s 50x50 }${image ~/conkyConfigs/weather/icons/current/currentIcon.png -p 8,500 -s 50x50 }
 ${font DejaVu Sans Mono:bold:size=10}${color 00ffae}Today's Horoscope ${font DejaVu Sans Mono:bold:size=12}♏${hr 2}$color
 ${font DejaVu Sans Mono:size=9}${execpi 3600 ~/conkyConfigs/conkyHoros/horo.sh && cat ~/conkyConfigs/conkyHoros/horoscope}
 ]]
