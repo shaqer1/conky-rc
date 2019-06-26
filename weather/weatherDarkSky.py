@@ -34,7 +34,7 @@ def addHourlyData(hourlyWeatherData,s):
     i = 1
     while i<4:
         time = datetime.datetime.fromtimestamp(hourlyWeatherData[i]['time']).hour
-        time = (str(time) + 'am') if time < 12 else (str(time-12) + 'pm') if time > 12 else (str(time) + 'pm')
+        time = ('12am') if time == 0 else (str(time) + 'am') if time < 12 else (str(time-12) + 'pm') if time > 12 else (str(time) + 'pm')
         s += '{}\n{}\n{}º\nFeels Like {}º\n'.format(
             time,hourlyWeatherData[i]['summary'],hourlyWeatherData[i]['temperature'],hourlyWeatherData[i]['apparentTemperature'])
         i+=1
