@@ -1,5 +1,0 @@
-## Conky
-## Trello
-- add colors and alignment
-## Notes MD
-- add alignc/r etc in python file with each line iterated!
