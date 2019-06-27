@@ -99,7 +99,7 @@ def main():
     APIkey = APIKeyData['key']
 
     ip_request = requests.get('https://get.geojs.io/v1/ip.json')
-    my_ip = ip_request.json()['ip']  # ip_request.json() => {ip: 'XXX.XXX.XX.X'}
+    my_ip = ip_request.json()['ip']  
     geo_request_url = 'https://get.geojs.io/v1/ip/geo/' + my_ip + '.json'
     geo_request = requests.get(geo_request_url)
     lat = geo_request.json()['latitude']

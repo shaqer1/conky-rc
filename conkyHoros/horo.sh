@@ -28,18 +28,24 @@ monthToNum["Nov"]=11
 monthToNum["Dec"]=12
 
 wget https://www.horoscope.com/us/horoscopes/general/horoscope-general-daily-today.aspx\?sign\=8 --output-document=scorpio.html -q
-
-date=$(grep '<p><strong class="date">' scorpio.html | cut -c 25- | rev | grep -o -P ">gnorts/<.{0,}" | cut -c 10- | rev)
-year=$(echo "$date" | grep -o -P ', .{0,}' | cut -c 3-)
-day=$(echo "$date" | grep -o -P ' .{0,}' | cut -c 2- | rev | grep -o -P ' .{0,}' | cut -c 3- | rev)
-if [ "${#day}" -eq 1 ]
-then
-    day="0$day"
-fi
-month=$(echo "$date" | grep -oe '[A-Z][a-z]* [0-9]' | cut -c 1-3)
-month=${monthToNum["$month"]}
-date="$year-$month-$day"
-date=$(date -d $date +%s)
+wget https://www.horoscope.com/star-ratings/today/scorpio --output-document=scorpioStars.html -q
+function getDate {
+    # date=$1
+    date=$(grep '<p><strong class="date">' scorpio.html | cut -c 25- | rev | grep -o -P ">gnorts/<.{0,}" | cut -c 10- | rev)
+    #echo "$date"
+    year=$(echo "$date" | grep -o -P ', .{0,}' | cut -c 3-)
+    day=$(echo "$date" | grep -o -P ' .{0,}' | cut -c 2- | rev | grep -o -P ' .{0,}' | cut -c 3- | rev)
+    if [ "${#day}" -eq 1 ]
+    then
+        day="0$day"
+    fi
+    month=$(echo "$date" | grep -oe '[A-Z][a-z]* [0-9]' | cut -c 1-3)
+    month=${monthToNum["$month"]}
+    date="$year-$month-$day"
+    date=$(date -d $date +%s)
+    echo $date
+}
+date=$(getDate)
 systemDate=$(date +'%Y-%m-%d')
 systemDate=$(date -d $systemDate +%s)
 
@@ -48,21 +54,21 @@ then
     if [ "$systemDate" -gt "$date" ]
     then
         wget https://www.horoscope.com/us/horoscopes/general/horoscope-general-daily-tomorrow.aspx\?sign\=8 --output-document=scorpio.html -q
+        wget https://www.horoscope.com/star-ratings/tomorrow/scorpio --output-document=scorpioStars.html -q   
     else
         wget https://www.horoscope.com/us/horoscopes/general/horoscope-general-daily-yesterday.aspx\?sign\=8 --output-document=scorpio.html -q
+        wget https://www.horoscope.com/star-ratings/yesterday/scorpio --output-document=scorpioStars.html -q
     fi
 fi
 
-date=$(grep '<p><strong class="date">' scorpio.html | cut -c 25- | rev | grep -o -P ">gnorts/<.{0,}" | cut -c 10- | rev)
-systemDayPrint=$(date +'%a, %b %d')
+date=$(getDate)
+systemDayPrint=$(date --date="@${date}" +"%a, %b %d")
 
 
-wget https://www.horoscope.com/star-ratings/today/scorpio --output-document=scorpioStars.html -q
 horoscope=$(grep '<p><strong class="date">' scorpio.html | cut -c 49-1000 | rev | cut -c 5- | rev) 
 echo "$systemDayPrint-$horoscope"  | fold -s -w 55 > /home/shafay/conkyConfigs/conkyHoros/horoscope
 grep "<h3>Today's Matches</h3>" scorpio.html -A 15 > matches
 grep "<h3>Sex <i" scorpioStars.html -A 8 > stars 
-
 
 function getStars {
     rating=$1
