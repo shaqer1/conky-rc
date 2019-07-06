@@ -34,7 +34,7 @@ conky.config = {
 };
 
 conky.text = [[${font Entopia:bold:size=12}${color FFFF33}4 Week Agenda${hr 2}$color${font}${color}
-    ${execpi 300 gcalcli --conky --nolineart calw 4 --width 12|
+    ${execpi 300 gcalcli --conky --nolineart calw 4 --width 14 |
                     sed -e 's/(0\x71(B/-/g' \
                         -e 's/(0\x78(B/|/g' \
                         -e 's/(0\x6A(B/-/g' \
