@@ -7,25 +7,25 @@ conky.config = {
     override_utf8_locale = true,
     double_buffer = true,
     no_buffers = true,
-    text_buffer_size = 50000,
+    text_buffer_size = 32768,
     imlib_cache_size = 0,
     own_window = true,
-    own_window_type = 'desktop',
+    own_window_type = 'normal',
     own_window_argb_visual = true,
-    own_window_argb_value = 100,
+    own_window_argb_value = 120,
     own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
-    border_inner_margin = 0,
+    border_inner_margin = 10,
     border_outer_margin = 0,
-    xinerama_head = 0,
+    xinerama_head = 1,
     alignment = 'top_right',
     gap_x = 0,
     gap_y = 0,
-    draw_shades = false,
+    draw_shades = true,
     draw_outline = false,
     draw_borders = false,
     draw_graph_borders = false,
     use_xft = true,
-    font = 'Droid Sans Mono:size=9',
+    font = 'Ubuntu Mono:size=10',
     xftalpha = 0.8,
     uppercase = false,
     default_color = '#FFFFFF',
@@ -34,25 +34,5 @@ conky.config = {
 };
 
 conky.text = [[${font Entopia:bold:size=12}${color FFFF33}4 Week Agenda${hr 2}$color${font}${color}
-    ${execpi 300 gcalcli --conky --nolineart calw 4 --width 14 |
-                    sed -e 's/(0\x71(B/-/g' \
-                        -e 's/(0\x78(B/|/g' \
-                        -e 's/(0\x6A(B/-/g' \
-                        -e 's/(0\x6B(B/|/g' \
-                        -e 's/(0\x6C(B/-/g' \
-                        -e 's/(0\x6D(B/|/g' \
-                        -e 's/(0\x6E(B/-/g' \
-                        -e 's/(0\x74(B/|/g' \
-                        -e 's/(0\x75(B/-/g' \
-                        -e 's/(0\x76(B/|/g' \
-                        -e 's/(0\x77(B/-/g' \
-                        -e 's/(0\x78(B/|/g' \
-                        -e 's/(0\x6A(B/-/g' \
-                        -e 's/(0\x6B(B/|/g' \
-                        -e 's/(0\x6C(B/-/g' \
-                        -e 's/(0\x6D(B/|/g' \
-                        -e 's/(0\x6E(B/-/g' \
-                        -e 's/(0\x74(B/|/g' \
-                        -e 's/(0\x75(B/-/g' \
-                        -e 's/(0\x76(B/|/g' \
-                        -e 's/(0\x77(B/-/g'}]];
+${execpi 300 PYTHONIOENCODING=utf8 gcalcli --lineart unicode --conky calw now 4 --width 12}
+]];

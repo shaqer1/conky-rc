@@ -65,7 +65,7 @@ date=$(getDate)
 systemDayPrint=$(date --date="@${date}" +"%a, %b %d")
 
 
-horoscope=$(grep '<p><strong class="date">' scorpio.html | cut -c 49-1000 | rev | cut -c 5- | rev) 
+horoscope=$(grep '<p><strong class="date">' scorpio.html | cut -c 25- | rev | cut -c 5- | rev | grep -o -P '.{0}</strong>.*' | cut -c 13-) 
 echo "$systemDayPrint-$horoscope"  | fold -s -w 55 > /home/shafay/conkyConfigs/conkyHoros/horoscope
 grep "<h3>Today's Matches</h3>" scorpio.html -A 15 > matches
 grep "<h3>Sex <i" scorpioStars.html -A 8 > stars 
