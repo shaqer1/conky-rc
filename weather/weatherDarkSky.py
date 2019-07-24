@@ -35,8 +35,8 @@ def addHourlyData(hourlyWeatherData,s):
     while i<4:
         time = datetime.datetime.fromtimestamp(hourlyWeatherData[i]['time']).hour
         time = ('12am') if time == 0 else (str(time) + 'am') if time < 12 else (str(time-12) + 'pm') if time > 12 else (str(time) + 'pm')
-        s += '{}\n{}\n{}º\nFeels Like {}º\n'.format(
-            time,hourlyWeatherData[i]['summary'],hourlyWeatherData[i]['temperature'],hourlyWeatherData[i]['apparentTemperature'])
+        s += '{}{}\n{}{}\n{}{}º\nFeels Like {}º\n{}'.format(
+            '${color #7EC0EE}',time, '${color}',hourlyWeatherData[i]['summary'],'${color red}',hourlyWeatherData[i]['temperature'],hourlyWeatherData[i]['apparentTemperature'],'${color}')
         i+=1
     return s
 def getMonth(i):
@@ -141,10 +141,10 @@ def main():
     UVIndex = currentWeather['uvIndex']
 
     currentIcon = currentWeather['icon']
-    s = "{}\n{}º    Feels like: {}º\nWind: {} {}\nClouds: {}%      Pressure: {}mmHg       Humidity: {}%\n".format(
-        weatherDesc, temp, feelsLikeTemp, windSpeed,windDegrees,cloudsPerc,pressure,humidity)
-    s += "{} at {}mm probability of {}\nUV Index: {}   \n".format(
-        precipType,precipIntensity,precipProbability, UVIndex)
+    s = "{}\n{}{}º    Feels like: {}º\n{}Wind: {} {}\n{}Clouds: {}%    {}Pressure: {}mmHg     {}Humidity: {}%\n".format(
+        weatherDesc,'${color red}', temp, feelsLikeTemp,'${color blue}', windSpeed,windDegrees,'${color #7EC0EE}',cloudsPerc,"${color}",pressure,'${color red}',humidity)
+    s += "{}{} at {}mm probability of {}\nUV Index: {}   \n{}".format(
+        "${color blue}", precipType,precipIntensity,precipProbability, UVIndex, '${color}')
 
     s = addHourlyData(hourlyWeatherData, s)
 
