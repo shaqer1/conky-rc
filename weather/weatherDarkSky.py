@@ -3,6 +3,7 @@ import json
 import datetime
 import math
 from shutil import copyfile
+import textwrap
 
 
 def windDegreeSwitcher(argument): 
@@ -26,19 +27,54 @@ def windDegreeSwitcher(argument):
         return "East"
     return "Invalid Degrees"
 
-def setIcons(**kwargs): # TODO
+def setIcons(**kwargs): 
     for key, value in kwargs.items(): 
         copyfile('/home/shafay/conkyConfigs/weather/icons/'+value+'.png', '/home/shafay/conkyConfigs/weather/icons/current/'+key +'.png') 
 
-def addHourlyData(hourlyWeatherData,s):
-    i = 1
-    while i<4:
-        time = datetime.datetime.fromtimestamp(hourlyWeatherData[i]['time']).hour
-        time = ('12am') if time == 0 else (str(time) + 'am') if time < 12 else (str(time-12) + 'pm') if time > 12 else (str(time) + 'pm')
-        s += '{}{}\n{}{}\n{}{}º\nFeels Like {}º\n{}'.format(
-            '${color #7EC0EE}',time, '${color}',hourlyWeatherData[i]['summary'],'${color red}',hourlyWeatherData[i]['temperature'],hourlyWeatherData[i]['apparentTemperature'],'${color}')
-        i+=1
+def getTimeSTR(time):
+    return ('12am') if time == 0 else (str(time) + 'am') if time < 12 else (str(time-12) + 'pm') if time > 12 else (str(time) + 'pm')
+
+def checkHourlySumLen(data):
+    return len(data[1]['summary']) > 10 or len(data[2]['summary']) > 10 or len(data[3]['summary']) > 10
+
+def fillTextLines(array, wrapped, prefix):
+    lines = wrapped.split('\n')
+    if len(array) < len(lines):
+        for i in range(0, len(lines)-len(array)):
+            array.append('')
+    for i in range(0,len(lines)):
+        array[i]+=prefix+lines[i]
+    return array
+
+def getString(arr):
+    s = ''
+    for i in arr:
+        s+= i + '\n'
     return s
+
+def addHourlyData(hourlyWeatherData,s):
+    pos = ['c','r']
+    time = '${color #7EC0EE}'
+    desc = ['${color}']
+    temps = '${color #ff6461}'
+    atemps = '${color red}'
+    for j in range(0,4):
+        for i in range(1,4):
+            if j == 0:
+                time += ('' if i <=1 else ('${align' +pos[i-2]+ '}')) + getTimeSTR(datetime.datetime.fromtimestamp(hourlyWeatherData[i]['time']).hour)
+            if j == 1:
+                if checkHourlySumLen(hourlyWeatherData):
+                    wrapped = textwrap.fill(hourlyWeatherData[i]['summary'].replace('and','&'),10)
+                    desc = fillTextLines(desc, wrapped, '' if i <=1 else ('${align' +pos[i-2]+ '}'))
+                else: 
+                    desc += ('' if i <=1 else ('${align' +pos[i-2]+ '}')) + hourlyWeatherData[i]['summary']
+            if j == 2:
+                temps += ('' if i <=1 else ('${align' +pos[i-2]+ '}')) + str(hourlyWeatherData[i]['temperature']) + 'º'
+            if j == 3:
+                atemps += ('' if i <=1 else ('${align' +pos[i-2]+ '}')) + 'Feels Like ' + str(hourlyWeatherData[i]['apparentTemperature']) + 'º'
+    
+    s = time + '\n' + getString(desc) + temps + '\n' + atemps
+    return s + '${color}'
 def getMonth(i):
     switcher = {
         1: "January",
@@ -141,12 +177,12 @@ def main():
     UVIndex = currentWeather['uvIndex']
 
     currentIcon = currentWeather['icon']
-    s = "{}\n{}{}º    Feels like: {}º\n{}Wind: {} {}\n{}Clouds: {}%    {}Pressure: {}mmHg     {}Humidity: {}%\n".format(
-        weatherDesc,'${color red}', temp, feelsLikeTemp,'${color blue}', windSpeed,windDegrees,'${color #7EC0EE}',cloudsPerc,"${color}",pressure,'${color red}',humidity)
-    s += "{}{} at {}mm probability of {}\nUV Index: {}   \n{}".format(
-        "${color blue}", precipType,precipIntensity,precipProbability, UVIndex, '${color}')
+    s = "{}\n{}{}º Feels like: {}º\n{}Wind:{} {}\n{}Clouds:{}% {}Pressure: {}mmHg     {}Humidity: {}%\n".format(
+        '${alignr}'+ weatherDesc,'${color red}', '${alignr}'+ str(temp), feelsLikeTemp,'${alignr}${color #7EC0EE}',str(windSpeed),windDegrees,'${alignr}${color #7EC0EE}',str(cloudsPerc),"${color}",pressure,'${color red}',humidity)
+    s += "{}{} at {}mm probability of {}\n{}UV Index: {}   {}\n".format(
+        "${color #7EC0EE}", '${alignr}'+ precipType,precipIntensity,precipProbability,'${alignr}', str(UVIndex), '${color}')
 
-    s = addHourlyData(hourlyWeatherData, s)
+    s += '\n\n\n\n' + addHourlyData(hourlyWeatherData, s)
 
     kwargs = {
         "hour1" : hourlyWeatherData[1]['icon'],

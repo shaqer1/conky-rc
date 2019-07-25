@@ -1,21 +1,30 @@
 {
     "version": "0.2.0",
     "configurations": [
-    {
-        "type": "bashdb",
-        "request": "launch",
-        "name": "Bash-Debug (select script from list of sh files)",
-        "cwd": "${workspaceFolder}",
-        "program": "${command:SelectScriptName}",
-        "args": []
-    },
-
-
+        {
+            "name": "Python: main File",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/weather",
+            "program": "${workspaceFolder}/weather/weatherDarkSky.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "bashdb",
+            "request": "launch",
+            "name": "Bash-Debug (select script from list of sh files)",
+            "cwd": "${workspaceFolder}",
+            "program": "${command:SelectScriptName}",
+            "args": []
+        },
         {
             "name": "Python: combineFiles",
             "type": "python",
             "request": "launch",
-            "args": ["/home/shafay/conkyConfigs/ListMD/notesText", "/home/shafay/conkyConfigs/ListMD/hwText"],
+            "args": [
+                "/home/shafay/conkyConfigs/ListMD/notesText",
+                "/home/shafay/conkyConfigs/ListMD/hwText"
+            ],
             "cwd": "${workspaceFolder}/ListMD",
             "program": "${workspaceFolder}/ListMD/combineFiles.py",
             "console": "integratedTerminal",
