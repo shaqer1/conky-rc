@@ -35,14 +35,14 @@ conky.config = {
     uppercase = false,
     default_color = '#FFFFFF',
     own_window_colour = '#000000',
-    minimum_width = 0, minimum_height = 0,
+    minimum_width = 600, minimum_height = 0,
 }
 
 conky.text = [[
-${font Droid Sans Mono:size=10}${execi 3600 python3 ~/conkyConfigs/trello/trelloMain.py | lynx --dump -stdin | fold -s -w 100}
-${hr}
-${color green}HW/assignments${color}${alignr}${color red}Notes${color}
-${hr}${execpi 3600 python3 ~/conkyConfigs/ListMD/mdToPython.py /home/shafay/conkyConfigs/ListMD/hw.md | lynx --dump -stdin | fold -s -w 40 > /home/shafay/conkyConfigs/ListMD/hwText }${execpi 3600 python3 ~/conkyConfigs/ListMD/mdToPython.py /home/shafay/conkyConfigs/ListMD/notes.md | lynx --dump -stdin | fold -s -w 40 > /home/shafay/conkyConfigs/ListMD/notesText}
+${font Droid Sans Mono:size=10}${execpi 3600 python3 ~/conkyConfigs/trello/trelloMain.py}
+${hr 1}
+${font Entopia:bold:size=12}${color 33E9FF}HW/assignments${alignc}--------------------------------------------------------${alignr}${color red}Notes
+${execpi 3600 python3 ~/conkyConfigs/ListMD/mdToPython.py /home/shafay/conkyConfigs/ListMD/hw.md | lynx --dump -stdin | fold -s -w 40 > /home/shafay/conkyConfigs/ListMD/hwText }${execpi 3600 python3 ~/conkyConfigs/ListMD/mdToPython.py /home/shafay/conkyConfigs/ListMD/notes.md | lynx --dump -stdin | fold -s -w 40 > /home/shafay/conkyConfigs/ListMD/notesText}
 ${execpi 3600 python3 ~/conkyConfigs/ListMD/combineFiles.py /home/shafay/conkyConfigs/ListMD/notesText /home/shafay/conkyConfigs/ListMD/hwText }
 ]]
 

@@ -2,6 +2,14 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Python: trello File",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/trello",
+            "program": "${workspaceFolder}/trello/trelloMain.py",
+            "console": "integratedTerminal"
+        },
+        {
             "name": "Python: main File",
             "type": "python",
             "request": "launch",
