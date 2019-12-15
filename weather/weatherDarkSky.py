@@ -64,10 +64,10 @@ def addHourlyData(hourlyWeatherData,s):
                 time += ('' if i <=1 else ('${align' +pos[i-2]+ '}')) + getTimeSTR(datetime.datetime.fromtimestamp(hourlyWeatherData[i]['time']).hour)
             if j == 1:
                 if checkHourlySumLen(hourlyWeatherData):
-                    wrapped = textwrap.fill(hourlyWeatherData[i]['summary'].replace('and','&'),10)
+                    wrapped = textwrap.fill(hourlyWeatherData[i]['summary'].replace('and','&'),13)
                     desc = fillTextLines(desc, wrapped, '' if i <=1 else ('${align' +pos[i-2]+ '}'))
                 else: 
-                    desc += ('' if i <=1 else ('${align' +pos[i-2]+ '}')) + hourlyWeatherData[i]['summary']
+                    desc[0] += ('' if i <=1 else ('${align' +pos[i-2]+ '}')) + hourlyWeatherData[i]['summary']
             if j == 2:
                 temps += ('' if i <=1 else ('${align' +pos[i-2]+ '}')) + str(hourlyWeatherData[i]['temperature']) + 'º'
             if j == 3:
