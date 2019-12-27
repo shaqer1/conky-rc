@@ -44,7 +44,7 @@ ${execpi 300 cat ~/conkyConfigs/weather/weatherDailyDat | sed -n 1p | fold -s -w
 
 
 
-${image ~/conkyConfigs/weather/icons/current/day1.png -s 50x50 -p 8,60 }${alignc}${image ~/conkyConfigs/weather/icons/current/day2.png -p 270,60 -s 50x50 }${alignr}${image ~/conkyConfigs/weather/icons/current/day3.png -p 580,60 -s 50x50 }
+${image ~/conkyConfigs/weather/icons/current/day1.png -s 50x50 -p 8,40 }${alignc}${image ~/conkyConfigs/weather/icons/current/day2.png -p 270,40 -s 50x50 }${alignr}${image ~/conkyConfigs/weather/icons/current/day3.png -p 580,40 -s 50x50 }
 ${execpi 300 cat ~/conkyConfigs/weather/weatherDailyDat | sed -n 2p}
 ${hr 2}
 ${execpi 300 cat ~/conkyConfigs/weather/weatherDailyDat | sed -n 3p}
