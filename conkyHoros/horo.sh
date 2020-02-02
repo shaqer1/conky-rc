@@ -66,7 +66,7 @@ systemDayPrint=$(date --date="@${date}" +"%a, %b %d")
 
 
 horoscope=$(grep '<p><strong>' scorpio.html | cut -c 12- | rev | cut -c 5- | rev | grep -o -P '.{0}</strong>.*' | cut -c 13-) 
-echo "$systemDayPrint-$horoscope"  | fold -s -w 55 > /home/shafay/conkyConfigs/conkyHoros/horoscope
+echo "$systemDayPrint-$horoscope"  | fold -s -w 55 | recode html > /home/shafay/conkyConfigs/conkyHoros/horoscope
 grep "<h3>Today's Matches</h3>" scorpio.html -A 15 > matches
 grep "<h3>Sex <i" scorpioStars.html -A 8 > stars 
 
@@ -85,28 +85,28 @@ star='${alignc}'
 star=$(getStars $rating $star)
 description=$(cat stars | sed -n 2p | cut -c 4- | rev | cut -c 5- | rev | fold -s -w 55)
 echo '${color red}Sex' "$star \$color" >> /home/shafay/conkyConfigs/conkyHoros/horoscope
-echo "$description" >> /home/shafay/conkyConfigs/conkyHoros/horoscope
+echo "$description" | recode html >> /home/shafay/conkyConfigs/conkyHoros/horoscope
 
 rating=$(cat stars | sed -n 3p | grep -o 'highlight' | wc -l)
 star='${alignc}'
 star=$(getStars $rating $star)
 description=$(cat stars | sed -n 4p | cut -c 4- | rev | cut -c 5- | rev | fold -s -w 55)
 echo '${color yellow}Hustle' "$star\$color" >> /home/shafay/conkyConfigs/conkyHoros/horoscope
-echo "$description" >> /home/shafay/conkyConfigs/conkyHoros/horoscope
+echo "$description" | recode html >> /home/shafay/conkyConfigs/conkyHoros/horoscope
 
 rating=$(cat stars | sed -n 5p | grep -o 'highlight' | wc -l)
 star='${alignc}'
 star=$(getStars $rating $star)
 description=$(cat stars | sed -n 6p | cut -c 4- | rev | cut -c 5- | rev | fold -s -w 55)
 echo '${color blue}Vibe' "$star\$color" >> /home/shafay/conkyConfigs/conkyHoros/horoscope
-echo "$description" >> /home/shafay/conkyConfigs/conkyHoros/horoscope
+echo "$description" | recode html >> /home/shafay/conkyConfigs/conkyHoros/horoscope
 
 rating=$(cat stars | sed -n 7p | grep -o 'highlight' | wc -l)
 star='${alignc}'
 star=$(getStars $rating $star)
 description=$(cat stars | sed -n 8p | cut -c 4- | rev | cut -c 5- | rev | fold -s -w 55)
 echo '${color green}Success' "$star\$color" >> /home/shafay/conkyConfigs/conkyHoros/horoscope
-echo "$description" >> /home/shafay/conkyConfigs/conkyHoros/horoscope
+echo "$description" | recode html >> /home/shafay/conkyConfigs/conkyHoros/horoscope
 
 echo '${color red}♥${alignc}${color yellow}${font Symbola:size=8}🤝${alignr}${color #8B4513}💼${font DejaVu Sans Mono:size=9}' >> /home/shafay/conkyConfigs/conkyHoros/horoscope
 match1=$(cat matches | sed -n 6p | cut -c 4- | rev | cut -c 5- | rev)
