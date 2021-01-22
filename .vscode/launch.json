@@ -1,7 +1,14 @@
 {
     "version": "0.2.0",
     "configurations": [
-
+        {
+            "name": "Python: uscis File",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/USCIS",
+            "program": "${workspaceFolder}/USCIS/uscis.py",
+            "console": "integratedTerminal"
+        },
         {
             "name": "Python: trello File",
             "type": "python",
